@@ -22,28 +22,26 @@ def config(settings):
         here. Deployers should ideally not need to edit any other files outside
         of their template folder.
     """
-    # import ipdb; ipdb.set_trace()
 
     T = current.T
 
-    #settings.base.system_name = T("Sahana Skeleton")
-    #settings.base.system_name_short = T("Sahana")
+    settings.base.system_name = T("B2Eden")
+    settings.base.system_name_short = T("B2Eden")
 
     # PrePopulate data
-    #settings.base.prepopulate = ("skeleton", "default/users")
-    settings.base.prepopulate += ("skeleton", "default/users")
+    settings.base.prepopulate += ("bee_two", "default/users")
 
     # Theme (folder to use for views/layout.html)
-    #settings.base.theme = "skeleton"
+    settings.base.theme = "bee_two"
 
     # Authentication settings
     # Should users be allowed to register themselves?
-    #settings.security.self_registration = False
+    settings.security.self_registration = True
     # Do new users need to verify their email address?
-    #settings.auth.registration_requires_verification = True
+    settings.auth.registration_requires_verification = True
     # Do new users need to be approved by an administrator prior to being able to login?
-    #settings.auth.registration_requires_approval = True
-    #settings.auth.registration_requests_organisation = True
+    settings.auth.registration_requires_approval = True
+    settings.auth.registration_requests_organisation = True
 
     # Approval emails get sent to all admins
     settings.mail.approver = "ADMIN"
@@ -64,30 +62,11 @@ def config(settings):
     # Languages used in the deployment (used for Language Toolbar & GIS Locations)
     # http://www.loc.gov/standards/iso639-2/php/code_list.php
     settings.L10n.languages = OrderedDict([
-    #    ("ar", "العربية"),
-    #    ("bs", "Bosanski"),
        ("en", "English"),
-    #    ("fr", "Français"),
+       ("fr", "Français"),
        ("de", "Deutsch"),
-    #    ("el", "ελληνικά"),
        ("es", "Español"),
        ("it", "Italiano"),
-    #    ("ja", "日本語"),
-    #    ("km", "ភាសាខ្មែរ"),
-    #    ("ko", "한국어"),
-    #    ("ne", "नेपाली"),          # Nepali
-    #    ("prs", "دری"), # Dari
-    #    ("ps", "پښتو"), # Pashto
-    #    ("pt", "Português"),
-    #    ("pt-br", "Português (Brasil)"),
-    #    ("ru", "русский"),
-    #    ("tet", "Tetum"),
-    #    ("tl", "Tagalog"),
-    #    ("tr", "Türkçe"),
-    #    ("ur", "اردو"),
-    #    ("vi", "Tiếng Việt"),
-    #    ("zh-cn", "中文 (简体)"),
-    #    ("zh-tw", "中文 (繁體)"),
     ])
     # Default language for Language Toolbar (& GIS Locations in future)
     #settings.L10n.default_language = "en"
@@ -133,10 +112,10 @@ def config(settings):
     settings.modules = OrderedDict([
         # Core modules which shouldn't be disabled
         ("default", Storage(
-            name_nice = T("Home"),
-            restricted = False, # Use ACLs to control access to this module
-            access = None,      # All Users (inc Anonymous) can see this module in the default menu & access the controller
-            module_type = None  # This item is not shown in the menu
+            name_nice=T("B2Eden"),
+            restricted=False, # Use ACLs to control access to this module
+            access=None,      # All Users (inc Anonymous) can see this module in the default menu & access the controller
+            module_type=None  # This item is not shown in the menu
         )),
         ("admin", Storage(
             name_nice = T("Administration"),
@@ -177,19 +156,24 @@ def config(settings):
             name_nice = T("Map"),
             #description = "Situation Awareness & Geospatial Analysis",
             restricted = True,
-            module_type = 6,     # 6th item in the menu
+            # module_type = 6,     # 6th item in the menu
         )),
-        ("pr", Storage(
-            name_nice = T("Person Registry"),
-            #description = "Central point to record details on People",
-            restricted = True,
-            access = "|1|",     # Only Administrators can see this module in the default menu (access to controller is possible to all still)
-            module_type = 10
-        )),
+        # ("pr", Storage(
+        #     name_nice = T("Person Registry"),
+        #     #description = "Central point to record details on People",
+        #     restricted = True,
+        #     access = "|1|",     # Only Administrators can see this module in the default menu (access to controller is possible to all still)
+        #     module_type = 10
+        # )),
         ("org", Storage(
             name_nice = T("Organizations"),
             #description = 'Lists "who is doing what & where". Allows relief agencies to coordinate their activities',
             restricted = True,
+            module_type = 2
+        )),
+        ('issues', Storage(
+            name_nice=T("Issue Tracker"),
+            restricted=False,
             module_type = 1
         )),
         #("hrm", Storage(

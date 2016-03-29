@@ -3,14 +3,13 @@
 from gluon import *
 from s3 import S3CustomController
 
-THEME = "skeleton"
+THEME = "bee_two"
 
 # =============================================================================
 class index(S3CustomController):
     """ Custom Home Page """
 
     def __call__(self):
-
         output = {}
 
         # Allow editing of page content from browser using CMS module
