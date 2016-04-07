@@ -119,10 +119,10 @@ def config(settings):
         )),
         ("admin", Storage(
             name_nice = T("Administration"),
-            #description = "Site Administration",
+            description = "Site Administration",
             restricted = True,
-            access = "|1|",     # Only Administrators can see this module in the default menu & access the controller
-            module_type = None  # This item is handled separately for the menu
+            access="|1|",     # Only Administrators can see this module in the default menu & access the controller
+            module_type=None  # This item is handled separately for the menu
         )),
         ("appadmin", Storage(
             name_nice = T("Administration"),
@@ -147,24 +147,24 @@ def config(settings):
         #    name_nice = T("Guided Tour Functionality"),
         #    module_type = None,
         #)),
-        #("translate", Storage(
+        # ("translate", Storage(
         #    name_nice = T("Translation Functionality"),
         #    #description = "Selective translation of strings based on module.",
         #    module_type = None,
-        #)),
+        # )),
         ("gis", Storage(
             name_nice = T("Map"),
             #description = "Situation Awareness & Geospatial Analysis",
-            restricted = True,
-            # module_type = 6,     # 6th item in the menu
+            restricted=True,
+            module_type=6,     # 6th item in the menu
         )),
-        # ("pr", Storage(
-        #     name_nice = T("Person Registry"),
-        #     #description = "Central point to record details on People",
-        #     restricted = True,
-        #     access = "|1|",     # Only Administrators can see this module in the default menu (access to controller is possible to all still)
-        #     module_type = 10
-        # )),
+        ("pr", Storage(
+            name_nice = T("Person Registry"),
+            #description = "Central point to record details on People",
+            restricted = False,
+            # access = "|1|",     # Only Administrators can see this module in the default menu (access to controller is possible to all still)
+            module_type = 3
+        )),
         ("org", Storage(
             name_nice = T("Organizations"),
             #description = 'Lists "who is doing what & where". Allows relief agencies to coordinate their activities',
@@ -174,14 +174,14 @@ def config(settings):
         ('issues', Storage(
             name_nice=T("Issue Tracker"),
             restricted=False,
-            module_type = 1
+            module_type=1
         )),
-        #("hrm", Storage(
-        #    name_nice = T("Staff"),
-        #    #description = "Human Resources Management",
-        #    restricted = True,
-        #    module_type = 2,
-        #)),
+        ("hrm", Storage(
+           name_nice = T("Staff"),
+           #description = "Human Resources Management",
+           restricted = True,
+           module_type = 2,
+        )),
         #("vol", Storage(
         #    name_nice = T("Volunteers"),
         #    #description = "Human Resources Management",
@@ -200,13 +200,13 @@ def config(settings):
         #    restricted = True,
         #    module_type = 10,
         #)),
-        #("msg", Storage(
+        # ("msg", Storage(
         #    name_nice = T("Messaging"),
         #    #description = "Sends & Receives Alerts via Email & SMS",
         #    restricted = True,
         #    # The user-visible functionality of this module isn't normally required. Rather it's main purpose is to be accessed from other modules.
         #    module_type = None,
-        #)),
+        # )),
         #("supply", Storage(
         #    name_nice = T("Supply Chain Management"),
         #    #description = "Used within Inventory Management, Request Management and Asset Management",
@@ -238,12 +238,12 @@ def config(settings):
         #    restricted = True,
         #    module_type = 10,
         #)),
-        #("project", Storage(
-        #    name_nice = T("Projects"),
-        #    #description = "Tracking of Projects, Activities and Tasks",
-        #    restricted = True,
-        #    module_type = 2
-        #)),
+        ("project", Storage(
+           name_nice = T("Projects"),
+           #description = "Tracking of Projects, Activities and Tasks",
+           restricted = True,
+           module_type = 2
+        )),
         #("cr", Storage(
         #    name_nice = T("Shelters"),
         #    #description = "Tracks the location, capacity and breakdown of victims in Shelters",
